@@ -23,9 +23,9 @@ Follow these steps to get your development environment set up:
      dotnet build
      ```
   4. Launch the application by running:
-    ```
-	  dotnet run --project VCompare.WebAPI
-    ```
+  ```
+  dotnet run --project VCompare.WebAPI
+  ```
 The API is now up and running. For accessing the Swagger UI, navigate to [https://localhost:5001/swagger](https://localhost:5001/swagger).
 
 ### Testing
