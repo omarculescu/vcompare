@@ -23,9 +23,9 @@ Follow these steps to get your development environment set up:
      dotnet build
      ```
   4. Launch the application by running:
-  ```
-  dotnet run --project VCompare.WebAPI
-  ```
+     ```
+     dotnet run --project VCompare.WebAPI
+     ```
 The API is now up and running. For accessing the Swagger UI, navigate to [https://localhost:5001/swagger](https://localhost:5001/swagger).
 
 ### Testing
@@ -43,3 +43,14 @@ To run the automated tests:
 * .NET Core 2.2
 * ASP.NET Core 2.2
 * Entity Framework Core 2.2
+
+## Building with Docker
+To build an image for this application, run the `docker build` command and tag the image appropriately. For example:
+```
+docker build -t vcompare.webapi:1.0.0
+```
+To create and run a container with the built image, run
+```
+docker run -d -p 80:8080 --name VCompare vcompare.webapi:1.0.0
+```
+The application should now be available at `localhost:8080`. To access the swagger UI, navigate to [http://localhost:8080/swagger](http://localhost:8080/swagger).
