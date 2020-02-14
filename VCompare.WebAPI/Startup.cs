@@ -33,7 +33,7 @@ namespace VCompare.WebAPI
         {
             services.AddMediatR(typeof(GetComparisonResultQuery).GetTypeInfo().Assembly);
             services.AddDbContext<IVCompareDbContext, VCompareDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("VCompareDatabase")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddSwaggerDocument(config =>
             {
                 config.PostProcess = document =>
@@ -45,12 +45,12 @@ namespace VCompare.WebAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.EnvironmentName == "Development")
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                // app.UseDatabaseErrorPage();
             }
             else
             {
@@ -62,7 +62,14 @@ namespace VCompare.WebAPI
             app.UseOpenApi();
             app.UseSwaggerUi3();
 
-            app.UseMvc();
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+            });
         }
     }
 }

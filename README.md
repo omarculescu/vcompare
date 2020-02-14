@@ -31,8 +31,8 @@ Use these instructions to get the project up and running.
 
 ### Prerequisites
 You will need the following tools:
-* [Visual Studio Code or 2017](https://www.visualstudio.com/downloads/)
-* [.NET Core SDK 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2)
+* [Visual Studio Code or 2017+](https://www.visualstudio.com/downloads/)
+* [.NET Core SDK 3.1](https://www.microsoft.com/net/download/dotnet-core/3.1)
 
 ### Setup
 Follow these steps to get your development environment set up:
@@ -64,17 +64,17 @@ To run the automated tests:
   ```
 
 ## Technologies
-* .NET Core 2.2
-* ASP.NET Core 2.2
-* Entity Framework Core 2.2
+* .NET Core 3.1
+* ASP.NET Core 3.1
+* Entity Framework Core 3.1
 
 ## Building with Docker
 To build an image for this application, run the `docker build` command and tag the image appropriately. For example:
 ```
-docker build -t vcompare.webapi:1.0.0 .
+docker build -t vcompare.webapi .
 ```
 To create and run a container with the built image, run
 ```
-docker run -d -p 8080:80 --name VCompare vcompare.webapi:1.0.0
+docker run -d -p 8080:80 --name VCompare vcompare.webapi
 ```
 The application should now be available at `localhost:8080`. To access the swagger UI, navigate to [http://localhost:8080/swagger](http://localhost:8080/swagger).
